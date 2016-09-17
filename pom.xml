@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.nterry</groupId>
+  <artifactId>google-httptransport-jersey</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Google Http Client :: HttpTransport :: Jersey :: Parent</name>
+  <description>A Google Http client HttpTransport implementation backed by Jersey</description>
+  <url>https://github.com/nterry/google-httptransport-jersey</url>
+
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:nterry/google-httptransport-jersey.git</connection>
+    <developerConnection>scm:git:git@github.com:nterry/google-httptransport-jersey.git</developerConnection>
+    <url>https://github.com/nterry/google-httptransport-jersey</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>Nicholas Terry</name>
+      <email>nick.i.terry@gmail.com</email>
+    </developer>
+  </developers>
+
+  <modules>
+    <module>jersey1</module>
+    <module>jersey2</module>
+  </modules>
+</project>
