@@ -25,7 +25,7 @@ public class SunJerseyHttpRequest extends LowLevelHttpRequest {
   /**
    * Constructs an instance with the given HTTP method and {@link WebResource}.
    *
-   * @param method The HTTP method to use. It is preferred to use {@link HttpMethods} to guarantee correctness
+   * @param method      The HTTP method to use. It is preferred to use {@link HttpMethods} to guarantee correctness
    * @param webResource The {@link WebResource} representing the request
    */
   public SunJerseyHttpRequest(String method, WebResource webResource) {
@@ -59,4 +59,5 @@ public class SunJerseyHttpRequest extends LowLevelHttpRequest {
 
     return new SunJerseyHttpResponse(builder.method(method, ClientResponse.class));
   }
+
 }

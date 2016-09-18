@@ -4,8 +4,12 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.LowLevelHttpResponse;
 import com.sun.jersey.api.client.ClientResponse;
 
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Sub class of {@link HttpTransport} wrapping a {@link ClientResponse} (Jersey 1.x).
@@ -32,7 +36,7 @@ public class SunJerseyHttpResponse extends LowLevelHttpResponse {
 
   @Override
   public String getContentEncoding() throws IOException {
-    return null;
+    return getHeaders().get("Content-Encoding");
   }
 
   @Override
@@ -67,11 +71,32 @@ public class SunJerseyHttpResponse extends LowLevelHttpResponse {
 
   @Override
   public String getHeaderName(int index) throws IOException {
-    return null;
+    return getHeaders().keySet().toArray(new String[]{})[index];
   }
 
   @Override
   public String getHeaderValue(int index) throws IOException {
-    return null;
+    return getHeaders().values().toArray(new String[]{})[index];
+  }
+
+  private Map<String, String> getHeaders() {
+    Map<String, String> headersMap = new HashMap<>();
+    MultivaluedMap<String, String> headersMultiMap = clientResponse.getHeaders();
+
+    for (Map.Entry<String, List<String>> headerEntry : headersMultiMap.entrySet()) {
+      headersMap.put(headerEntry.getKey(), flattenHeaderValues(headerEntry.getValue()));
+    }
+
+    return headersMap;
+  }
+
+  private String flattenHeaderValues(List<String> headerValues) {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    for (String header : headerValues) {
+      stringBuilder.append(String.format("%s, ", header));
+    }
+
+    return stringBuilder.toString().substring(0, stringBuilder.length() - 2);
   }
 }
