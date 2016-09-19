@@ -38,10 +38,12 @@
     <google-http-client.version>1.22.0</google-http-client.version>
     <jersey1-client.version>1.19.2</jersey1-client.version>
     <jersey2-client.version>2.23.2</jersey2-client.version>
+    <commons-io.version>2.4</commons-io.version>
 
     <slf4j.version>1.7.21</slf4j.version>
     <testng.version>6.9.10</testng.version>
     <mockito-all.version>1.10.19</mockito-all.version>
+    <equalsverifier.version>2.1.5</equalsverifier.version>
 
     <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -77,6 +79,12 @@
       </dependency>
 
       <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j.version}</version>
@@ -92,6 +100,12 @@
         <groupId>org.mockito</groupId>
         <artifactId>mockito-all</artifactId>
         <version>${mockito-all.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>nl.jqno.equalsverifier</groupId>
+        <artifactId>equalsverifier</artifactId>
+        <version>${equalsverifier.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

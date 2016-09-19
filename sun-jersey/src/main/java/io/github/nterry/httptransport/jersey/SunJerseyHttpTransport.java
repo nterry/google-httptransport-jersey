@@ -16,12 +16,29 @@ public class SunJerseyHttpTransport extends HttpTransport {
 
   private final Client client;
 
+  /**
+   * Creates an instance with a default {@link Client}.
+   */
   public SunJerseyHttpTransport() {
     this(Client.create());
   }
 
+  /**
+   * Creates an instance with the given {@link Client}.
+   *
+   * @param client The {@link Client} to use for requests.
+   * @throws IllegalArgumentException if the provided {@link Client} is null
+   */
   public SunJerseyHttpTransport(Client client) {
-    this.client = client;
+    this.client = validateClient(client);
+  }
+
+  private static Client validateClient(Client clientToValidate) {
+    if (null != clientToValidate) {
+      return clientToValidate;
+    }
+
+    throw new IllegalArgumentException("Client cannot be null!");
   }
 
   @Override

@@ -24,9 +24,10 @@ public class SunJerseyHttpResponse extends LowLevelHttpResponse {
    * Creates a new instance with the given {@link ClientResponse}.
    *
    * @param clientResponse The {@link ClientResponse} representing the response from the server
+   * @throws IllegalArgumentException if the {@link ClientResponse} is null
    */
   public SunJerseyHttpResponse(ClientResponse clientResponse) {
-    this.clientResponse = clientResponse;
+    this.clientResponse = validateClientResponse(clientResponse);
   }
 
   @Override
@@ -79,6 +80,7 @@ public class SunJerseyHttpResponse extends LowLevelHttpResponse {
     return getHeaders().values().toArray(new String[]{})[index];
   }
 
+
   private Map<String, String> getHeaders() {
     Map<String, String> headersMap = new HashMap<>();
     MultivaluedMap<String, String> headersMultiMap = clientResponse.getHeaders();
@@ -98,5 +100,13 @@ public class SunJerseyHttpResponse extends LowLevelHttpResponse {
     }
 
     return stringBuilder.toString().substring(0, stringBuilder.length() - 2);
+  }
+
+  private static ClientResponse validateClientResponse(ClientResponse clientResponse) {
+    if (null != clientResponse) {
+      return clientResponse;
+    }
+
+    throw new IllegalArgumentException("Client response cannot be null!");
   }
 }
